@@ -1,0 +1,177 @@
+@import "tailwindcss";
+
+@theme {
+  /* Razzmatazz palette tokens */
+  --color-razzmatazz-50: #fff0f3;
+  --color-razzmatazz-100: #ffe2e7;
+  --color-razzmatazz-200: #ffc9d6;
+  --color-razzmatazz-300: #ff9eb4;
+  --color-razzmatazz-400: #ff678e;
+  --color-razzmatazz-500: #ff326a;
+  --color-razzmatazz-600: #ef0f57;
+  --color-razzmatazz-700: #db0650;
+  --color-razzmatazz-800: #a90845;
+  --color-razzmatazz-900: #900b42;
+  --color-razzmatazz-950: #51001f;
+
+  --color-border: hsl(var(--border));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-card: hsl(var(--card));
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-subtle: pulse-subtle 4s ease-in-out infinite;
+  --animate-fade-in: fade-in 0.7s ease-out forwards;
+  --animate-fade-in-delay-1: fade-in 0.7s ease-out 0.2s forwards;
+  --animate-fade-in-delay-2: fade-in 0.7s ease-out 0.4s forwards;
+  --animate-fade-in-delay-3: fade-in 0.7s ease-out 0.6s forwards;
+  --animate-fade-in-delay-4: fade-in 0.7s ease-out 0.8s forwards;
+  --animate-meteor: meteor 5s linear infinite;
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  @keyframes pulse-subtle {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes meteor {
+    0% {
+      transform: rotate(215deg) translateX(0);
+      opacity: 1;
+    }
+    70% {
+      opacity: 1;
+    }
+    100% {
+      transform: rotate(215deg) translateX(-500px);
+      opacity: 0;
+    }
+  }
+}
+
+@layer base {
+  :root {
+    /* Light theme based on Razzmatazz palette */
+    --background: 348 100% 97%; /* #fff0f3 (50) */
+    --foreground: 335 86% 30%; /* #900b42 (900) */
+
+    --card: 0 0% 100%; /* white for contrast on light bg */
+
+    --primary: 341 88% 50%; /* #ef0f57 (600) */
+    --primary-foreground: 210 40% 98%; /* near-white */
+
+    --border: 346 100% 89%; /* #ffc9d6 (200) */
+  }
+
+  .dark {
+    /* Dark theme based on Razzmatazz palette */
+    --background: 337 100% 16%; /* #51001f (950) */
+    --foreground: 348 100% 97%; /* #fff0f3 (50) */
+
+    --card: 335 86% 30%; /* #900b42 (900) */
+
+    --primary: 344 100% 60%; /* #ff326a (500) */
+    --primary-foreground: 210 40% 98%;
+
+    --border: 337 91% 35%; /* #a90845 (800) */
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+
+  @media (width >= 640px) {
+    max-width: 640px;
+  }
+  @media (width >= 768px) {
+    max-width: 768px;
+  }
+  @media (width >= 1024px) {
+    max-width: 1024px;
+  }
+  @media (width >= 1280px) {
+    max-width: 1280px;
+  }
+  @media (width >= 1400px) {
+    max-width: 1400px;
+  }
+}
+
+@utility text-glow {
+  @apply relative;
+  text-shadow: 0 0 10px rgba(239, 15, 87, 0.45);
+}
+
+@utility card-hover {
+  @apply transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg;
+}
+
+@utility gradient-border {
+  @apply relative rounded-md;
+  background: linear-gradient(to right, hsl(var(--card)), hsl(var(--card)));
+  background-clip: padding-box;
+  border: 1px solid transparent;
+}
+
+@utility cosmic-button {
+  @apply px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium 
+         transition-all duration-300 hover:shadow-[0_0_10px_rgba(239,15,87,0.45)]
+         hover:scale-105 active:scale-95;
+}
+
+@utility star {
+  @apply absolute rounded-full bg-white;
+  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.4);
+}
+
+@utility meteor {
+  @apply absolute bg-linear-to-r from-white via-white to-transparent rounded-full;
+  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.3);
+}
+
+#root {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+}
