@@ -1,5 +1,5 @@
 🌐 Brenda Huarcaya — Portfolio
-<p align="center"> <img src="/public/projects/brenda_photo.jpg" alt="Brenda Huarcaya" width="220" style="border-radius: 16px;" /> </p>
+<p align="center"> <img src="/public/projects/brenda_photo.png" alt="Brenda Huarcaya" width="220" style="border-radius: 16px;" /> </p>
 
 Bienvenid@ a mi portafolio profesional.
 Me especializo en desarrollo de software empresarial, aplicaciones escalables y automatización de procesos.
